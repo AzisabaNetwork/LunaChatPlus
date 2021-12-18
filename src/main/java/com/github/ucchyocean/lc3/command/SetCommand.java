@@ -88,7 +88,7 @@ public class SetCommand extends LunaChatSubCommand {
             sender.sendMessage(Messages.cmdmsgSetDefault(targetPlayer, targetChannel.getName()));
 
             // setされる相手のプレイヤーにも通知する
-            ChannelMember target = ChannelMember.getChannelMember(targetPlayer);
+            ChannelMember target = ChannelMember.getOnlineChannelMember(targetPlayer); // LCP
             if ( target != null ) {
                 target.sendMessage(Messages.cmdmsgSet(targetChannel.getName()));
             }

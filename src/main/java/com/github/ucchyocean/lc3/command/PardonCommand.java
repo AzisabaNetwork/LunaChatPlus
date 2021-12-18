@@ -100,7 +100,7 @@ public class PardonCommand extends LunaChatSubCommand {
         }
 
         // BAN解除されるプレイヤーがBANされているかどうかチェックする
-        ChannelMember kicked = ChannelMember.getChannelMember(kickedName);
+        ChannelMember kicked = ChannelMember.getChannelMemberFast(kickedName); // LCP
         if (!channel.getBanned().contains(kicked)) {
             sender.sendMessage(Messages.errmsgNotBanned());
             return true;

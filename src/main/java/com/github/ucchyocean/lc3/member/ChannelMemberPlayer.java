@@ -294,12 +294,40 @@ public class ChannelMemberPlayer extends ChannelMemberBukkit {
         if ( nameOrUuid.startsWith("$") ) {
             return new ChannelMemberPlayer(nameOrUuid.substring(1));
         } else {
+            // LCP start - use cache if possible
+            String uuid = LunaChat.getUUIDCacheData().getUUIDFromName(nameOrUuid);
+            if (uuid != null) return new ChannelMemberPlayer(uuid);
+            // LCP end - use cache if possible
             @SuppressWarnings("deprecation")
             OfflinePlayer op = Bukkit.getOfflinePlayer(nameOrUuid);
             if ( op == null ) return null;
             return new ChannelMemberPlayer(op.getUniqueId());
         }
     }
+
+    // LCP start
+    public static ChannelMemberPlayer getChannelMemberFast(String nameOrUuid) {
+        if ( nameOrUuid.startsWith("$") ) {
+            return new ChannelMemberPlayer(nameOrUuid.substring(1));
+        } else {
+            Player op = Bukkit.getPlayer(nameOrUuid);
+            if ( op != null ) return new ChannelMemberPlayer(op.getUniqueId());
+            String uuid = LunaChat.getUUIDCacheData().getUUIDFromName(nameOrUuid);
+            if (uuid != null) return new ChannelMemberPlayer(uuid);
+            return null;
+        }
+    }
+
+    public static ChannelMemberPlayer getOnlineChannelMember(String nameOrUuid) {
+        if ( nameOrUuid.startsWith("$") ) {
+            return new ChannelMemberPlayer(nameOrUuid.substring(1));
+        } else {
+            Player op = Bukkit.getPlayer(nameOrUuid);
+            if ( op == null ) return null;
+            return new ChannelMemberPlayer(op.getUniqueId());
+        }
+    }
+    // LCP end
 
     public ChannelMemberOther toChannelMemberOther() {
         ChannelMemberOther other = new ChannelMemberOther(getName(), getDisplayName(),

@@ -68,7 +68,7 @@ public class LunaChatMessageCommand {
     protected void sendTellMessage(ChannelMember inviter, String invitedName, String message) {
 
         // 招待相手が存在するかどうかを確認する
-        ChannelMember invited = ChannelMember.getChannelMember(invitedName);
+        ChannelMember invited = ChannelMember.getOnlineChannelMember(invitedName); // LCP
         if ( invited == null || !invited.isOnline() ) {
             inviter.sendMessage(Messages.errmsgNotfoundPlayer(invitedName));
             return;

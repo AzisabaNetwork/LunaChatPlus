@@ -100,7 +100,7 @@ public class UnmuteCommand extends LunaChatSubCommand {
         }
 
         // Mute解除されるプレイヤーがMuteされているかどうかチェックする
-        ChannelMember kicked = ChannelMember.getChannelMember(kickedName);
+        ChannelMember kicked = ChannelMember.getChannelMemberFast(kickedName); // LCP
         if (!channel.getMuted().contains(kicked)) {
             sender.sendMessage(Messages.errmsgNotMuted());
             return true;

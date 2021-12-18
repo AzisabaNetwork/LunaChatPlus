@@ -122,11 +122,11 @@ public class ModeratorCommand extends LunaChatSubCommand {
         for ( String mod : moderator ) {
             if ( mod.startsWith("-") ) {
                 String name = mod.substring(1);
-                ChannelMember cp = ChannelMember.getChannelMember(name);
+                ChannelMember cp = ChannelMember.getChannelMemberFast(name); // LCP
                 channel.removeModerator(cp);
                 sender.sendMessage(Messages.cmdmsgModeratorMinus(name, cname));
             } else {
-                ChannelMember cp = ChannelMember.getChannelMember(mod);
+                ChannelMember cp = ChannelMember.getChannelMemberFast(mod); // LCP
                 channel.addModerator(cp);
                 sender.sendMessage(Messages.cmdmsgModerator(mod, cname));
             }

@@ -128,6 +128,8 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
      * @return ChannelMember
      */
     public static ChannelMember getChannelMember(String nameOrUuid) {
+        // LCP - return null for very long name which wouldn't exist in normal environment
+        if (!nameOrUuid.startsWith("$") && nameOrUuid.length() > 20) return null;
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberPlayer.getChannelMember(nameOrUuid);
         } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
@@ -135,6 +137,36 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
         }
         return null; // TODO standalone用のChannelMemberを返す
     }
+
+    // LCP start
+    /**
+     * 名前またはUUIDから、オンラインのChannelMemberを作成して返す
+     * @param nameOrUuid 名前、または、"$" + UUID
+     * @return ChannelMember
+     */
+    public static ChannelMember getOnlineChannelMember(String nameOrUuid) {
+        if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
+            return ChannelMemberPlayer.getOnlineChannelMember(nameOrUuid);
+        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
+            return ChannelMemberProxiedPlayer.getChannelMember(nameOrUuid);
+        }
+        return null; // TODO standalone用のChannelMemberを返す
+    }
+
+    /**
+     * 名前またはUUIDから、過去に参加したことのあるプレイヤーのChannelMemberを作成して返す
+     * @param nameOrUuid 名前、または、"$" + UUID
+     * @return ChannelMember
+     */
+    public static ChannelMember getChannelMemberFast(String nameOrUuid) {
+        if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
+            return ChannelMemberPlayer.getChannelMemberFast(nameOrUuid);
+        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
+            return ChannelMemberProxiedPlayer.getChannelMember(nameOrUuid);
+        }
+        return null; // TODO standalone用のChannelMemberを返す
+    }
+    // LCP end
 
     /**
      * オブジェクトから、ChannelMemberを作成して返す

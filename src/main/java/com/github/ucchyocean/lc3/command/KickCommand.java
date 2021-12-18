@@ -106,7 +106,7 @@ public class KickCommand extends LunaChatSubCommand {
         }
 
         // キックされるプレイヤーがメンバーかどうかチェックする
-        ChannelMember kicked = ChannelMember.getChannelMember(kickedName);
+        ChannelMember kicked = ChannelMember.getChannelMemberFast(kickedName); // LCP
         if (!channel.getMembers().contains(kicked)) {
             sender.sendMessage(Messages.errmsgNomemberOther());
             return true;

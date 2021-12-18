@@ -109,7 +109,7 @@ public class BanCommand extends LunaChatSubCommand {
         }
 
         // BANされるプレイヤーがメンバーかどうかチェックする
-        ChannelMember kicked = ChannelMember.getChannelMember(kickedName);
+        ChannelMember kicked = ChannelMember.getChannelMemberFast(kickedName); // LCP
         if (!channel.getMembers().contains(kicked)) {
             sender.sendMessage(Messages.errmsgNomemberOther());
             return true;
