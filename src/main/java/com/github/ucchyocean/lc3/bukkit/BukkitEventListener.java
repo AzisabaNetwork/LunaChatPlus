@@ -47,7 +47,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author ucchy
  */
 public class BukkitEventListener implements Listener {
-
+    private org.bukkit.scheduler.BukkitTask saveTask = null; // LCP
     private static final int MAX_LIST_ITEMS = 8;
 
     /**
@@ -117,7 +117,11 @@ public class BukkitEventListener implements Listener {
 
         // UUIDをキャッシュ
         LunaChat.getUUIDCacheData().put(player.getUniqueId().toString(), player.getName());
-        LunaChat.getUUIDCacheData().save();
+        if (saveTask != null) saveTask.cancel();
+        saveTask = org.bukkit.Bukkit.getScheduler().runTaskLater(LunaChatBukkit.getInstance(), () -> {
+            LunaChat.getUUIDCacheData().save();
+            saveTask = null;
+        }, 100);
 
         // 強制参加チャンネル設定を確認し、参加させる
         forceJoinToForceJoinChannels(player);
