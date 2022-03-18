@@ -1,4 +1,4 @@
-name: ${project.name}
+name: LunaChat
 main: com.github.ucchyocean.lc3.LunaChatBukkit
 version: ${project.version}
 authors: [ucchy, YukiLeafX, LazyGon, tomo1560]
