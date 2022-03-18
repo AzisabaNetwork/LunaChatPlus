@@ -57,7 +57,7 @@ public class LunaChatJapanizeCommand {
             }
 
             // 指定されたプレイヤーが存在するかチェック
-            ChannelMember target = ChannelMember.getOnlineChannelMember(args[0]); // LCP
+            ChannelMember target = ChannelMember.getOnlineChannelMember(args[0]);
             if ( target == null || !target.isOnline() ) {
                 sender.sendMessage(Messages.errmsgNotfoundPlayer(args[0]));
                 return true;

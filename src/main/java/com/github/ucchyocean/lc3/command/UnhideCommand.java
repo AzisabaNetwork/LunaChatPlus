@@ -131,7 +131,7 @@ public class UnhideCommand extends LunaChatSubCommand {
             // プレイヤーが対象の場合の処理
 
             // 既に表示になっていないかどうかをチェックする
-            ChannelMember hided = ChannelMember.getChannelMemberFast(cname); // LCP
+            ChannelMember hided = ChannelMember.getChannelMemberFast(cname);
             if ( !api.getHidelist(hided).contains(sender) ) {
                 sender.sendMessage(Messages.errmsgAlreadyUnhidedPlayer());
                 return true;

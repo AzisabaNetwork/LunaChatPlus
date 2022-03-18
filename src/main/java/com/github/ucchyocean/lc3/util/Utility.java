@@ -216,7 +216,6 @@ public class Utility {
         return false;
     }
 
-    // LCP start
     /**
      * 指定された名前のプレイヤーが接続したことがあるかどうかを検索する
      * @param name プレイヤー名
@@ -225,7 +224,6 @@ public class Utility {
     public static boolean existsOfflinePlayerFast(String name) {
         return LunaChat.getUUIDCacheData().getUUIDFromName(name) != null;
     }
-    // LCP end
 
     /**
      * 動作環境のロケールを取得する。

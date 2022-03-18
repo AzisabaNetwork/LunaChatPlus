@@ -83,7 +83,7 @@ public class DenyCommand extends LunaChatSubCommand {
 
         // メッセージ送信
         sender.sendMessage(Messages.cmdmsgDeny());
-        ChannelMember inviter = ChannelMember.getOnlineChannelMember(inviterName); // LCP
+        ChannelMember inviter = ChannelMember.getOnlineChannelMember(inviterName);
         if (inviter != null && inviter.isOnline()) {
             inviter.sendMessage(Messages.cmdmsgDenyed());
         }

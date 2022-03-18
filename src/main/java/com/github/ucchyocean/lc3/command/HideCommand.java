@@ -116,7 +116,7 @@ public class HideCommand extends LunaChatSubCommand {
         Channel channel = api.getChannel(cname);
         if ( !isPlayerCommand && channel != null ) {
             isChannelCommand = true;
-        } else if ( !Utility.existsOfflinePlayerFast(cname) ) { // LCP
+        } else if ( !Utility.existsOfflinePlayerFast(cname) ) {
             sender.sendMessage(Messages.errmsgNotExistChannelAndPlayer());
             return true;
         }
@@ -147,7 +147,7 @@ public class HideCommand extends LunaChatSubCommand {
             // プレイヤーが対象の場合の処理
 
             // 既に非表示になっていないかどうかをチェックする
-            ChannelMember hided = ChannelMember.getChannelMemberFast(cname); // LCP
+            ChannelMember hided = ChannelMember.getChannelMemberFast(cname);
             if ( api.getHidelist(hided).contains(sender) ) {
                 sender.sendMessage(Messages.errmsgAlreadyHidedPlayer());
                 return true;

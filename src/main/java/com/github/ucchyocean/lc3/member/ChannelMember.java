@@ -128,7 +128,7 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
      * @return ChannelMember
      */
     public static ChannelMember getChannelMember(String nameOrUuid) {
-        // LCP - return null for very long name which wouldn't exist in normal environment
+        // return null for very long name which wouldn't exist in normal environment
         if (!nameOrUuid.startsWith("$") && nameOrUuid.length() > 20) return null;
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberPlayer.getChannelMember(nameOrUuid);
@@ -138,7 +138,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
         return null; // TODO standalone用のChannelMemberを返す
     }
 
-    // LCP start
     /**
      * 名前またはUUIDから、オンラインのChannelMemberを作成して返す
      * @param nameOrUuid 名前、または、"$" + UUID
@@ -166,7 +165,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
         }
         return null; // TODO standalone用のChannelMemberを返す
     }
-    // LCP end
 
     /**
      * オブジェクトから、ChannelMemberを作成して返す

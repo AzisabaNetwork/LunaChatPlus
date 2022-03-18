@@ -47,7 +47,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author ucchy
  */
 public class BukkitEventListener implements Listener {
-    private org.bukkit.scheduler.BukkitTask saveTask = null; // LCP
+    private org.bukkit.scheduler.BukkitTask saveTask = null;
     private static final int MAX_LIST_ITEMS = 8;
 
     /**
