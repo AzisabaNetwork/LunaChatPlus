@@ -1303,7 +1303,7 @@ public abstract class Channel {
     /**
      * Objectを、クラスTに変換する。nullならデフォルトを返す。
      * @param obj 変換元
-     * @param def nullだった場合のデフォルト
+     * @param def nullもしくはClassCastExceptionだった場合のデフォルト
      * @return 変換後
      */
     @SuppressWarnings("unchecked")
@@ -1312,7 +1312,14 @@ public abstract class Channel {
         if ( obj == null ) {
             return def;
         }
-        return (T)obj;
+        try {
+            if (def != null && !def.getClass().isAssignableFrom(obj.getClass())) {
+                throw new ClassCastException("obj (" + obj.getClass().getTypeName() + ") cannot be cast to " + def.getClass().getTypeName());
+            }
+            return (T) obj;
+        } catch (ClassCastException ignore) {
+            return def;
+        }
     }
 
     /**
