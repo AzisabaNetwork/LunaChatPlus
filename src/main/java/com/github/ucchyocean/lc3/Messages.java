@@ -1142,6 +1142,16 @@ public class Messages {
     }
 
     /**
+     * あなたが参加していないチャンネルの情報は確認できません。
+     */
+    public static String errmsgNotJoinMember() {
+        String msg = resources.getString("errmsgNotJoinMember");
+        if( msg == null ) return "";
+        KeywordReplacer kr = new KeywordReplacer(msg);
+        return Utility.replaceColorCode(resources.getString("errorPrefix", "") + kr.toString());
+    }
+
+    /**
      * 指定されたプレイヤー %player% が見つかりません。
      */
     public static String errmsgNotfoundPlayer(Object player) {
