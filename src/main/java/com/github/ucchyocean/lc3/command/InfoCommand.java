@@ -106,7 +106,7 @@ public class InfoCommand extends LunaChatSubCommand {
         if( !channel.getPassword().equals("") ) {
             ChannelMember joined = ChannelMember.getChannelMemberFast(sender.getName());
             if ( !channel.getMembers().contains(joined) ) {
-                sender.sendMessage(Messages.errmsgNomemberOther());
+                sender.sendMessage(Messages.errmsgNotJoinMember());
                 return true;
             }
         }
