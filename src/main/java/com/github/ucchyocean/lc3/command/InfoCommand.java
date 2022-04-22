@@ -105,7 +105,7 @@ public class InfoCommand extends LunaChatSubCommand {
         // パスワード設定されているか確認する
         if( !channel.getPassword().equals("") ) {
             // 参加していない場合はコマンド処理を回帰する
-            ChannelMember joined = ChannelMember.getChannelMemberFast(sender.getName());
+            ChannelMember joined = ChannelMember.getChannelMember(sender.getName());
             if ( !channel.getMembers().contains(joined) ) {
                 sender.sendMessage(Messages.errmsgNotJoinMember());
                 return true;
