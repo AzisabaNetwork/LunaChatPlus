@@ -102,6 +102,15 @@ public class InfoCommand extends LunaChatSubCommand {
             return true;
         }
 
+        // パスワード設定されているか確認する
+        if( !channel.getPassword().equals("") ) {
+            ChannelMember joined = ChannelMember.getChannelMemberFast(sender.getName());
+            if ( !channel.getMembers().contains(joined) ) {
+                sender.sendMessage(Messages.errmsgNomemberOther());
+                return true;
+            }
+        }
+
         // チャンネルモデレーターかどうか確認する
         boolean isModerator = channel.hasModeratorPermission(sender);
 
