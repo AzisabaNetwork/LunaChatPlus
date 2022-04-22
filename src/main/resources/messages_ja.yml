@@ -108,6 +108,7 @@ errmsgNotExistOrNotSpecified: '指定されたチャンネルが存在しない�
 errmsgExist: '指定されたチャンネル名が既に存在します。'
 errmsgNomember: '指定されたチャンネルに参加していません。'
 errmsgNomemberOther: '指定されたプレイヤーはチャンネルに参加していません。'
+errmsgNotJoinMember: 'あなたが参加していないチャンネルの情報は確認できません。'
 errmsgNotfoundPlayer: '指定されたプレイヤー %player% が見つかりません。'
 errmsgNotInvited: '招待を受けたプレイヤーではありません。'
 errmsgNotfoundChannel: 'チャンネルが無くなってしまったため、参加できませんでした。'
