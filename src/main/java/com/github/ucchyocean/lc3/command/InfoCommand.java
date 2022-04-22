@@ -103,7 +103,7 @@ public class InfoCommand extends LunaChatSubCommand {
         }
 
         // パスワード設定されているか確認する
-        if( !channel.getPassword().equals("") ) {
+        if( !sender.hasPermission("lunachat-admin.view-info") && !channel.getPassword().equals("") ) {
             // 参加していない場合はコマンド処理を回帰する
             ChannelMember joined = ChannelMember.getChannelMember(sender.getName());
             if ( !channel.getMembers().contains(joined) ) {
