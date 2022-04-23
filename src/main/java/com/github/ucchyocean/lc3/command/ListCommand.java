@@ -166,6 +166,11 @@ public class ListCommand extends LunaChatSubCommand {
                 continue;
             }
 
+            // パスワードが設定されているチャンネルはリストに表示しない
+            if( !player.hasPermission("lunachat-admin.list-all-channels") && !channel.getPassword().equals("") ) {
+                continue;
+            }
+
             // デフォルト発言先なら赤に、非表示中なら暗青にする。
             String disp = ChatColor.WHITE + channel.getName();
             if ( channel.getName().equalsIgnoreCase(dchannel) ) {
