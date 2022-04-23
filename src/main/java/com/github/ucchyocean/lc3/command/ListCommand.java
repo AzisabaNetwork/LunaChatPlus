@@ -167,7 +167,7 @@ public class ListCommand extends LunaChatSubCommand {
             }
 
             // パスワードが設定されているチャンネルはリストに表示しない
-            if( !channel.getPassword().equals("") ) {
+            if( !player.hasPermission("lunachat-admin.list-all-channels") && !channel.getPassword().equals("") ) {
                 continue;
             }
 
