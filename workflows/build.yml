@@ -1,0 +1,40 @@
+name: CI
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: 8
+          distribution: temurin
+          cache: maven
+      - name: Build
+        run: mvn clean install
+      - name: Retrieve API version
+        run: 'echo "::set-output name=version::$(mvn -f pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)"'
+        id: retrieveApiVersion
+      - name: Release new build
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          tag_name: ${{ steps.retrieveApiVersion.outputs.version }}
+          files: 'target/LunaChatPlus.jar'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: '~/.m2'
+          key: maven
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: LunaChatPlus
+          path: 'target/LunaChatPlus.jar'
