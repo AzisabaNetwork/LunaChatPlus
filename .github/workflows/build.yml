@@ -24,7 +24,7 @@ jobs:
       - name: Release new build
         uses: softprops/action-gh-release@v0.1.14
         with:
-          tag_name: ${{ steps.retrieveApiVersion.outputs.version }}
+          tag_name: v${{ steps.retrieveApiVersion.outputs.version }}
           files: 'target/LunaChatPlus.jar'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
