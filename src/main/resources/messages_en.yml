@@ -108,7 +108,7 @@ errmsgNotExistOrNotSpecified: 'Either the specified channel does not exist or th
 errmsgExist: 'The specified channel name already exists.'
 errmsgNomember: 'You have not joined the specified channel.'
 errmsgNomemberOther: 'The specified player has not joined the channel.'
-errmsgNotJoinMember: 'You can't see information on channels in which you are not a participant.'
+errmsgNotJoinMember: "You can't see information on channels in which you are not a participant."
 errmsgNotfoundPlayer: 'The specified player %player% cannot be found.'
 errmsgNotInvited: 'You are not the invited player.'
 errmsgNotfoundChannel: 'You couldn''t join because the channels are gone.'
