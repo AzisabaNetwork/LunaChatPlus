@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.github.ucchyocean.lc3.bukkit.event.LunaChatBukkitGlobalChatEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -322,6 +324,8 @@ public class BukkitEventListener implements Listener {
                             Utility.getAstariskString(matcher.group(0).length()));
                 }
             }
+
+            Bukkit.getPluginManager().callEvent(new LunaChatBukkitGlobalChatEvent(event.getPlayer(), event.getMessage(), message));
 
             // カラーコード置き換え
             // 置き換え設定になっていて、発言者がパーミッションを持っているなら、置き換えする
