@@ -9,6 +9,9 @@ import com.github.ucchyocean.lc3.LunaChat;
 import com.github.ucchyocean.lc3.LunaChatMode;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * チャンネルメンバーの抽象クラス
@@ -27,6 +30,13 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
      * @return プレイヤー名
      */
     public abstract String getName();
+
+    /**
+     * プレイヤーのUUIDを返す
+     * @return UUIDもしくはプレイヤーではない場合はnull
+     */
+    @Nullable
+    public abstract UUID getUniqueId();
 
     /**
      * プレイヤー表示名を返す

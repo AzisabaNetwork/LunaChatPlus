@@ -12,6 +12,9 @@ import org.bukkit.command.BlockCommandSender;
 import org.bukkit.entity.Player;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * ChannelMemberのBukkit-BlockCommandSender実装
@@ -47,6 +50,11 @@ public class ChannelMemberBlock extends ChannelMemberBukkit {
     @Override
     public String getName() {
         return sender.getName();
+    }
+
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return null;
     }
 
     /**

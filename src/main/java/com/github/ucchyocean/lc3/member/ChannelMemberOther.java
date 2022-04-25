@@ -7,6 +7,8 @@ import com.github.ucchyocean.lc3.util.BlockLocation;
 
 import net.md_5.bungee.api.chat.BaseComponent;
 
+import java.util.UUID;
+
 /**
  * 任意の内容を設定できるChannelMember
  * @author ucchy
@@ -21,6 +23,7 @@ public class ChannelMemberOther extends ChannelMember {
     private BlockLocation location;
     private String serverName;
     private String worldName;
+    private UUID uniqueId;
 
     public ChannelMemberOther(@NotNull String name) {
         this(name, name);
@@ -60,6 +63,16 @@ public class ChannelMemberOther extends ChannelMember {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Nullable
+    @Override
+    public UUID getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(@Nullable UUID uniqueId) {
+        this.uniqueId = uniqueId;
     }
 
     @Override

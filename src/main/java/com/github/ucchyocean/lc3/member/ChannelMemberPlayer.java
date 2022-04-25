@@ -20,6 +20,7 @@ import com.github.ucchyocean.lc3.bridge.VaultChatBridge;
 import com.github.ucchyocean.lc3.util.BlockLocation;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * ChannelMemberのBukkitPlayer実装
@@ -106,6 +107,11 @@ public class ChannelMemberPlayer extends ChannelMemberBukkit {
             return name;
         }
         return id.toString();
+    }
+
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return id;
     }
 
     /**

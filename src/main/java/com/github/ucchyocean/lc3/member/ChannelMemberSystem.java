@@ -1,6 +1,9 @@
 package com.github.ucchyocean.lc3.member;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 public class ChannelMemberSystem extends ChannelMember {
 
@@ -15,6 +18,11 @@ public class ChannelMemberSystem extends ChannelMember {
     @Override
     public String getName() {
         return NAME;
+    }
+
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return null;
     }
 
     @Override

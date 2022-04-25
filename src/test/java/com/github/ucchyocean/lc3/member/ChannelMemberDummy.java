@@ -6,6 +6,9 @@
 package com.github.ucchyocean.lc3.member;
 
 import net.md_5.bungee.api.chat.BaseComponent;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * テスト用のダミーメンバー
@@ -29,6 +32,11 @@ public class ChannelMemberDummy extends ChannelMember {
     @Override
     public String getName() {
         return "ucchy";
+    }
+
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return UUID.fromString("9603ae84-5be8-40af-af14-a62ed0f14a29");
     }
 
     /**

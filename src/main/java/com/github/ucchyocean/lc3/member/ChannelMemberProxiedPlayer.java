@@ -86,6 +86,11 @@ public class ChannelMemberProxiedPlayer extends ChannelMemberBungee {
         return id.toString();
     }
 
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return id;
+    }
+
     /**
      * プレイヤー表示名を返す
      * @return プレイヤー表示名

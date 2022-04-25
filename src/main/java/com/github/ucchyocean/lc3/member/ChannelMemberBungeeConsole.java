@@ -11,6 +11,9 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.connection.Server;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 /**
  * ChannelMemberのBungee-ConsoleCommandSender実装
@@ -66,6 +69,11 @@ public class ChannelMemberBungeeConsole extends ChannelMemberBungee {
     @Override
     public String getName() {
         return sender.getName();
+    }
+
+    @Override
+    public @Nullable UUID getUniqueId() {
+        return null;
     }
 
     /**
