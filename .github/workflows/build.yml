@@ -18,6 +18,10 @@ jobs:
           cache: maven
       - name: Build
         run: mvn clean install
+      - name: Deploy
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Retrieve API version
         run: 'echo "::set-output name=version::$(mvn -f pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)"'
         id: retrieveApiVersion
