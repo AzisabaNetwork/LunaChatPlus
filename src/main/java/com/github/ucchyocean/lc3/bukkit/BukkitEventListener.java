@@ -120,7 +120,7 @@ public class BukkitEventListener implements Listener {
         // UUIDをキャッシュ
         LunaChat.getUUIDCacheData().put(player.getUniqueId().toString(), player.getName());
         if (saveTask != null) saveTask.cancel();
-        saveTask = org.bukkit.Bukkit.getScheduler().runTaskLater(LunaChatBukkit.getInstance(), () -> {
+        saveTask = org.bukkit.Bukkit.getScheduler().runTaskLaterAsynchronously(LunaChatBukkit.getInstance(), () -> {
             LunaChat.getUUIDCacheData().save();
             saveTask = null;
         }, 100);

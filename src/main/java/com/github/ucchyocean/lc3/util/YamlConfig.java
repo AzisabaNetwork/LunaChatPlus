@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
@@ -99,7 +100,7 @@ public class YamlConfig extends YamlSection {
     public void save(File file) throws IOException {
 
         Yaml yaml = new Yaml();
-        String data = yaml.dumpAsMap(map);
+        String data = yaml.dumpAsMap(new HashMap<>(map));
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(data);
