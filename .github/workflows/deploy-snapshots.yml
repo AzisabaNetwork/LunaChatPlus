@@ -21,6 +21,7 @@ jobs:
         with:
           java-version: '8'
           distribution: 'adopt'
+          server-id: repo
       - name: Build with Maven
         run: mvn -B package --file pom.xml
       - name: Prepare settings.xml
