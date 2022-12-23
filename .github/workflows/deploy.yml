@@ -2,9 +2,10 @@ name: Deploy
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - released
+  push:
+    paths-ignore:
+      - "**.md"
+      - "renovate.json"
 
 jobs:
   build:
