@@ -115,9 +115,9 @@
 
   <repositories>
     <repository>
-      <id>jitpack.io</id>
-      <name>Vault Repository</name>
-      <url>https://jitpack.io/</url>
+      <id>azisaba</id>
+      <name>Azisaba repository</name>
+      <url>https://repo.azisaba.net/repository/maven-public/</url>
     </repository>
     <repository>
       <id>mikeprimm-repo</id>
