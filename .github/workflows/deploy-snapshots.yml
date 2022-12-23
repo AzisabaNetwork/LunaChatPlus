@@ -2,9 +2,12 @@ name: Deploy
 
 on:
   workflow_dispatch:
-  release:
-    types:
-      - released
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+      - "renovate.json"
 
 jobs:
   build:
@@ -24,4 +27,4 @@ jobs:
         run: |
           echo "<settings><servers><server><id>repo</id><username>${{ secrets.REPO_USERNAME }}</username><password>${{ secrets.REPO_PASSWORD }}</password></server></servers></settings>" > $HOME/deploy-settings.xml
       - name: Deploy
-        run: mvn deploy -Durl=${{ secrets.REPO_URL }} -DrepositoryId=repo -s $HOME/deploy-settings.xml
+        run: mvn deploy -Durl=${{ secrets.REPO_SNAPSHOT_URL }} -DrepositoryId=repo -s $HOME/deploy-settings.xml
