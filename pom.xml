@@ -285,9 +285,12 @@
   </dependencies>
   <distributionManagement>
     <repository>
-      <id>github</id>
-      <name>GitHub Packages</name>
-      <url>https://maven.pkg.github.com/AzisabaNetwork/LunaChatPlus</url>
+      <id>azisaba</id>
+      <url>https://repo.azisaba.net/repository/maven-releases/</url>
     </repository>
+    <snapshotRepository>
+      <id>azisaba</id>
+      <url>https://repo.azisaba.net/repository/maven-snapshots/</url>
+    </snapshotRepository>
   </distributionManagement>
 </project>
