@@ -15,7 +15,7 @@ import com.github.ucchyocean.lc3.LunaChat;
 import com.github.ucchyocean.lc3.event.EventResult;
 import com.github.ucchyocean.lc3.japanize.IMEConverter;
 import com.github.ucchyocean.lc3.japanize.JapanizeType;
-import com.github.ucchyocean.lc3.japanize.YukiKanaConverter;
+import com.github.ucchyocean.lc3.japanize.RomajiTextReader;
 import com.github.ucchyocean.lc3.member.ChannelMember;
 import com.github.ucchyocean.lc3.util.Utility;
 
@@ -71,7 +71,7 @@ public class JapanizeConvertTask {
                 LunaChat.getAPI().getAllDictionary();
 
         // カラーコード削除、URL削除
-        String deletedURL = Utility.stripColorCode(org.replaceAll(REGEX_URL, " "));
+        String deletedURL = org.replaceAll(REGEX_URL, " ");
 
         // キーワードをロック
         int index = 0;
@@ -94,11 +94,25 @@ public class JapanizeConvertTask {
         }
 
         // カナ変換
-        String japanized = YukiKanaConverter.conv(keywordLocked);
+        String japanized = RomajiTextReader.parse(keywordLocked);
 
         // IME変換
         if ( type == JapanizeType.GOOGLE_IME ) {
+            japanized = japanized.replaceAll("§([0-9a-fklmnor])", "§\\\\$1");
             japanized = IMEConverter.convByGoogleIME(japanized);
+            japanized = japanized.replace("§￥", "§");
+            japanized = japanized.replace("§０", "§0");
+            japanized = japanized.replace("§１", "§1");
+            japanized = japanized.replace("§２", "§2");
+            japanized = japanized.replace("§３", "§3");
+            japanized = japanized.replace("§４", "§4");
+            japanized = japanized.replace("§５", "§5");
+            japanized = japanized.replace("§６", "§6");
+            japanized = japanized.replace("§７", "§7");
+            japanized = japanized.replace("§８", "§8");
+            japanized = japanized.replace("§９", "§9");
+            japanized = japanized.replace("§あ", "§a");
+            japanized = japanized.replace("§え", "§e");
         }
 
         // キーワードのアンロック

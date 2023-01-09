@@ -370,7 +370,7 @@ public class BukkitEventListener implements Listener {
                     String taskFormat = Utility.replaceColorCode(config.getJapanizeLine1Format());
 
                     String japanized = api.japanize(
-                            kanaTemp, config.getJapanizeType());
+                            message, config.getJapanizeType());
                     if ( japanized != null ) {
                         String temp = taskFormat.replace("%msg", message);
                         message = temp.replace("%japanize", japanized);
