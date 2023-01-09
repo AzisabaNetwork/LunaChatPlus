@@ -185,6 +185,7 @@ public class Channel {
      * @return チャンネル情報
      * @deprecated Legacy Version
      */
+    @Deprecated
     public ArrayList<String> getInfo(boolean forModerator) {
         return new ArrayList<String>(channel.getInfo(forModerator));
     }

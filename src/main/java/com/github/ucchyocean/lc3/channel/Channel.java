@@ -644,8 +644,20 @@ public abstract class Channel {
      * チャンネル情報を返す
      * @param forModerator モデレータ向けの情報を含めるかどうか
      * @return チャンネル情報
+     * @deprecated {@link #getInfo(ChannelMember, boolean)}
      */
+    @Deprecated
     public List<String> getInfo(boolean forModerator) {
+        return getInfo(null, forModerator);
+    }
+
+    /**
+     * チャンネル情報を返す
+     * @param actor プレイヤーのオンライン状態を見る権限があるかどうかをチェックする対象
+     * @param forModerator モデレータ向けの情報を含めるかどうか
+     * @return チャンネル情報
+     */
+    public List<String> getInfo(@Nullable ChannelMember actor, boolean forModerator) {
 
         ArrayList<String> info = new ArrayList<String>();
         info.add(Messages.channelInfoFirstLine());
@@ -679,19 +691,20 @@ public abstract class Channel {
 
                 ChannelMember cp = getMembers().get(i);
                 String name = cp.getName();
-                String disp;
                 if ( getModerator().contains(cp) ) {
                     name = "@" + name;
                 }
-                if ( cp.isOnline() ) {
-                    if ( getHided().contains(cp) )
-                        disp = ChatColor.DARK_AQUA + name;
-                    else
+                String disp;
+                if ( actor != null && actor.hasPermission("lunachat-admin.member-presence") && cp.isOnline() ) {
+                    if ( getHided().contains(cp) ) {
+                        disp = ChatColor.DARK_GRAY + name;
+                    } else {
                         disp = ChatColor.WHITE + name;
+                    }
                 } else {
                     disp = ChatColor.GRAY + name;
                 }
-                buf.append(disp + ",");
+                buf.append(disp).append(",");
             }
 
             info.add(buf.toString());
