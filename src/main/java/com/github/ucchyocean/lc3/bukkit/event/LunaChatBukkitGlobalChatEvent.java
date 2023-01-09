@@ -13,6 +13,7 @@ public class LunaChatBukkitGlobalChatEvent extends Event {
     private final String ngMaskedMessage;
 
     public LunaChatBukkitGlobalChatEvent(@NotNull CommandSender sender, @NotNull String originalMessage, @NotNull String ngMaskedMessage) {
+        super(true);
         this.sender = sender;
         this.originalMessage = originalMessage;
         this.ngMaskedMessage = ngMaskedMessage;
