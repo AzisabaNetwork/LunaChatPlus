@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.azisaba</groupId>
   <artifactId>lunachatplus</artifactId>
-  <version>3.3.1</version>
+  <version>3.3.2</version>
   <description>A powerfull chat channel plugin with IME (Kana-Kanji conversion) support</description>
   <url>https://github.com/ucchyocean/LunaChat</url>
 
@@ -127,7 +127,7 @@
     <repository>
       <id>onarandombox-repo</id>
       <name>Multiverse repository</name>
-      <url>https://repo.onarandombox.com/content/repositories/multiverse/</url>
+      <url>https://repo.onarandombox.com/multiverse-releases</url>
     </repository>
     <repository>
       <id>codemc-repo</id>
@@ -165,6 +165,12 @@
       <version>1.16-R0.2-SNAPSHOT</version>
       <optional>true</optional>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>net.md-5</groupId>
+          <artifactId>brigadier</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>net.md-5</groupId>
@@ -202,9 +208,31 @@
     <dependency>
       <groupId>com.onarandombox.multiversecore</groupId>
       <artifactId>Multiverse-Core</artifactId>
-      <version>4.1.0</version>
+      <version>4.3.9</version>
       <optional>true</optional>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>me.main__.util</groupId>
+          <artifactId>SerializationConfig</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.pneumaticraft.commandhandler</groupId>
+          <artifactId>CommandHandler</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.dumptruckman.minecraft</groupId>
+          <artifactId>buscript</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.dumptruckman.minecraft</groupId>
+          <artifactId>Logging</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>de.themoep.idconverter</groupId>
+          <artifactId>mappings</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.gmail.nossr50.mcMMO</groupId>

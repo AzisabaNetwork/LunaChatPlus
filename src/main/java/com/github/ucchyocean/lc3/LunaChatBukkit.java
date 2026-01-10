@@ -113,7 +113,9 @@ public class LunaChatBukkit extends JavaPlugin implements PluginInterface {
         // MultiverseCore のロード
         temp = getServer().getPluginManager().getPlugin("Multiverse-Core");
         if ( temp != null ) {
-            multiverse = MultiverseCoreBridge.load(temp);
+            try {
+                multiverse = MultiverseCoreBridge.load(temp);
+            } catch (NoClassDefFoundError ignored) {}
         }
 
         // mcMMOのロード
