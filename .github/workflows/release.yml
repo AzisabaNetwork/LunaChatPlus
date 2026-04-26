@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Setup JDK
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+        with:
+          java-version: 11
+          distribution: temurin
+          cache: maven
+
+      - name: Prepare settings.xml
+        run: |
+          echo "<settings><servers><server><id>azisaba</id><username>${{ secrets.REPO_USERNAME }}</username><password>${{ secrets.REPO_PASSWORD }}</password></server></servers></settings>" > $HOME/.m2/settings.xml
+      - name: Deploy
+        run: mvn clean deploy
+      - name: Retrieve API version
+        run: 'echo "version=$(mvn -f pom.xml help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_OUTPUT'
+        id: retrieveApiVersion
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: LunaChatPlus
+          path: 'target/LunaChatPlus.jar'
+
+      - name: Release new build
+        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+        with:
+          tag_name: v${{ steps.retrieveApiVersion.outputs.version }}
+          files: 'target/LunaChatPlus.jar'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
