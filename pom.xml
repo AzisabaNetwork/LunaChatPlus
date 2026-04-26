@@ -99,9 +99,6 @@
         <version>2.12.4</version>
         <configuration>
           <junitArtifactName>junit:junit</junitArtifactName>
-          <encoding>UTF-8</encoding>
-          <inputEncoding>UTF-8</inputEncoding>
-          <outputEncoding>UTF-8</outputEncoding>
           <argLine>-Dfile.encoding=UTF-8</argLine>
         </configuration>
       </plugin>
