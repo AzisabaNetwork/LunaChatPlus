@@ -27,7 +27,7 @@ public class MultiverseCoreBridge {
     /**
      * MultiverseCore-apiをロードする
      * @param plugin MultiverseCoreのプラグインインスタンス
-     * @param ロードしたかどうか
+     * @return ロードしたかどうか(nullの場合はロード失敗)
      */
     public static MultiverseCoreBridge load(Plugin plugin) {
         if ( plugin instanceof MultiverseCore ) {
