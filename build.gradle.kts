@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "net.azisaba"
-version = "3.4.0+1.21.11"
+version = "3.4.1+1.21.11"
 description = "lunachatplus"
 java.sourceCompatibility = JavaVersion.VERSION_21
 
@@ -103,6 +103,11 @@ tasks {
 
     compileJava {
         options.encoding = "UTF-8"
+    }
+
+    shadowJar {
+        enableAutoRelocation = true
+        relocationPrefix = "net.azisaba.lunachatplus.libs"
     }
 }
 
