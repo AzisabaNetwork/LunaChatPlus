@@ -7,10 +7,9 @@ package com.github.ucchyocean.lc3.bridge;
 
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
-
-import com.onarandombox.MultiverseCore.MultiverseCore;
-import com.onarandombox.MultiverseCore.api.Core;
-import com.onarandombox.MultiverseCore.api.MultiverseWorld;
+import org.mvplugins.multiverse.core.MultiverseCore;
+import org.mvplugins.multiverse.core.MultiverseCoreApi;
+import org.mvplugins.multiverse.core.world.MultiverseWorld;
 
 /**
  * MultiverseCore連携クラス
@@ -19,7 +18,7 @@ import com.onarandombox.MultiverseCore.api.MultiverseWorld;
 public class MultiverseCoreBridge {
 
     /** MultiverseCore API クラス */
-    private Core mvc;
+    private MultiverseCoreApi mvc;
 
     /** コンストラクタは使用不可 */
     private MultiverseCoreBridge() {
@@ -31,10 +30,9 @@ public class MultiverseCoreBridge {
      * @param ロードしたかどうか
      */
     public static MultiverseCoreBridge load(Plugin plugin) {
-
         if ( plugin instanceof MultiverseCore ) {
             MultiverseCoreBridge bridge = new MultiverseCoreBridge();
-            bridge.mvc = (Core)plugin;
+            bridge.mvc = MultiverseCoreApi.get();
             return bridge;
         } else {
             return null;
@@ -48,9 +46,9 @@ public class MultiverseCoreBridge {
      */
     public String getWorldAlias(String worldName) {
 
-        MultiverseWorld mvworld = mvc.getMVWorldManager().getMVWorld(worldName);
+        MultiverseWorld mvworld = mvc.getWorldManager().getWorld(worldName).getOrNull();
         if ( mvworld != null ) {
-            if ( mvworld.getAlias().length() > 0 ) {
+            if (!mvworld.getAlias().isEmpty()) {
                 return mvworld.getAlias();
             } else {
                 return mvworld.getName();
@@ -67,9 +65,9 @@ public class MultiverseCoreBridge {
      */
     public String getWorldAlias(World world) {
 
-        MultiverseWorld mvworld = mvc.getMVWorldManager().getMVWorld(world);
+        MultiverseWorld mvworld = mvc.getWorldManager().getWorld(world).getOrNull();
         if ( mvworld != null ) {
-            if ( mvworld.getAlias().length() > 0 ) {
+            if (!mvworld.getAlias().isEmpty()) {
                 return mvworld.getAlias();
             } else {
                 return mvworld.getName();

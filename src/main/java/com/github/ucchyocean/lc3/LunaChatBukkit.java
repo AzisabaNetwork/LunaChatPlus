@@ -15,7 +15,6 @@ import java.util.concurrent.Callable;
 import java.util.logging.Level;
 
 import org.bstats.bukkit.Metrics;
-import org.bstats.charts.DrilldownPie;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -73,7 +72,7 @@ public class LunaChatBukkit extends JavaPlugin implements PluginInterface {
 
         // Metrics
         Metrics metrics = new Metrics(this, 7936);
-        metrics.addCustomChart(new DrilldownPie(
+        metrics.addCustomChart(new Metrics.DrilldownPie(
                 "minecraft_server_version", () -> {
                     Map<String, Map<String, Integer>> map = new HashMap<>();
                     Map<String, Integer> sub = new HashMap<>();

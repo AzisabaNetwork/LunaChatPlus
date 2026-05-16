@@ -23,6 +23,8 @@ repositories {
         url = uri("https://repo.azisaba.net/repository/maven-public/")
     }
 
+    maven("https://nexus.neetgames.com/repository/maven-public")
+
     maven {
         url = uri("https://repo.mikeprimm.com/")
     }
@@ -62,14 +64,14 @@ dependencies {
     compileOnly("org.dynmap:dynmap-api:2.0") {
         exclude("org.bukkit", "bukkit")
     }
-    compileOnly("com.onarandombox.multiversecore:multiverse-core:4.3.9") {
+    compileOnly("org.mvplugins.multiverse.core:multiverse-core:5.6.2") {
         exclude("me.main__.util", "SerializationConfig")
         exclude("com.pneumaticraft.commandhandler", "CommandHandler")
         exclude("com.dumptruckman.minecraft", "buscript")
         exclude("com.dumptruckman.minecraft", "Logging")
         exclude("de.themoep.idconverter", "mappings")
     }
-    compileOnly("com.gmail.nossr50.mcMMO:mcMMO:2.1.146") {
+    compileOnly("com.gmail.nossr50.mcMMO:mcMMO:2.2.051") {
         exclude("org.apache.maven.scm", "maven-scm-provider-gitexe")
         exclude("org.bstats", "bstats-bukkit")
         exclude("org.spigotmc", "spigot-api")
