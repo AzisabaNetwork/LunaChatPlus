@@ -919,8 +919,6 @@ public abstract class Channel {
         Channel channel = null;
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             channel = new BukkitChannel(name);
-        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
-            channel = new BungeeChannel(name);
         } else {
             channel = new StandaloneChannel(name);
         }

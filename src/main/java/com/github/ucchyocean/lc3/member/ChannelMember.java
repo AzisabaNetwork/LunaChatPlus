@@ -142,8 +142,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
         if (!nameOrUuid.startsWith("$") && nameOrUuid.length() > 20) return null;
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberPlayer.getChannelMember(nameOrUuid);
-        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
-            return ChannelMemberProxiedPlayer.getChannelMember(nameOrUuid);
         }
         return null; // TODO standalone用のChannelMemberを返す
     }
@@ -156,8 +154,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
     public static ChannelMember getOnlineChannelMember(String nameOrUuid) {
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberPlayer.getOnlineChannelMember(nameOrUuid);
-        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
-            return ChannelMemberProxiedPlayer.getChannelMember(nameOrUuid);
         }
         return null; // TODO standalone用のChannelMemberを返す
     }
@@ -170,8 +166,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
     public static ChannelMember getChannelMemberFast(String nameOrUuid) {
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberPlayer.getChannelMemberFast(nameOrUuid);
-        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
-            return ChannelMemberProxiedPlayer.getChannelMember(nameOrUuid);
         }
         return null; // TODO standalone用のChannelMemberを返す
     }
@@ -187,8 +181,6 @@ public abstract class ChannelMember implements Comparable<ChannelMember> {
 
         if ( LunaChat.getMode() == LunaChatMode.BUKKIT ) {
             return ChannelMemberBukkit.getChannelMemberBukkit(obj);
-        } else if ( LunaChat.getMode() == LunaChatMode.BUNGEE ) {
-            return ChannelMemberBungee.getChannelMemberBungee(obj);
         }
         return null; // TODO standalone用のChannelMemberを返す
     }

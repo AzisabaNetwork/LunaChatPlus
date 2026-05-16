@@ -39,7 +39,6 @@ import com.github.ucchyocean.lc3.event.EventSenderInterface;
 import com.github.ucchyocean.lc3.member.ChannelMember;
 import com.github.ucchyocean.lc3.member.ChannelMemberBlock;
 import com.github.ucchyocean.lc3.member.ChannelMemberBukkitConsole;
-import com.github.ucchyocean.lc3.member.ChannelMemberBungee;
 import com.github.ucchyocean.lc3.member.ChannelMemberPlayer;
 
 /**
@@ -52,7 +51,7 @@ public class BukkitEventSender implements EventSenderInterface {
     /**
      * チャンネルチャットのチャットイベント
      * @param channelName チャンネル名
-     * @param player 発言者
+     * @param member 発言者
      * @param originalMessage 発言内容
      * @param ngMaskedMessage 発言内容（NGマスク後）
      * @param messageFormat 発言に適用されるフォーマット
@@ -142,7 +141,6 @@ public class BukkitEventSender implements EventSenderInterface {
      * @param displayName 発言者の表示名
      * @param originalMessage 発言内容（元々の内容）
      * @return イベント実行結果
-     * @see com.github.ucchyocean.lc3.event.EventSenderInterface#sendLunaChatChannelMessageEvent(java.lang.String, com.github.ucchyocean.lc3.member.ChannelMember, java.lang.String, java.util.ArrayList, java.lang.String, java.lang.String)
      */
     @Override
     public EventResult sendLunaChatChannelMessageEvent(String channelName, ChannelMember member, String message,
@@ -173,7 +171,6 @@ public class BukkitEventSender implements EventSenderInterface {
      * @param member オプションを変更した人
      * @param options 変更後のオプション
      * @return イベント実行結果
-     * @see com.github.ucchyocean.lc3.event.EventSenderInterface#sendLunaChatChannelOptionChangedEvent(java.lang.String, com.github.ucchyocean.lc3.member.ChannelMember, java.util.HashMap)
      */
     @Override
     public EventResult sendLunaChatChannelOptionChangedEvent(String channelName, ChannelMember member,
@@ -284,7 +281,6 @@ public class BukkitEventSender implements EventSenderInterface {
      */
     private ChannelPlayer convertChannelMemberToChannelPlayer(ChannelMember cm) {
         if ( cm == null ) return null;
-        if ( cm instanceof ChannelMemberBungee ) return null; // Bungeeモードの場合は変換できない
         if ( cm instanceof ChannelMemberPlayer ) {
             return ChannelPlayer.getChannelPlayer(cm.toString());
         } else if ( cm instanceof ChannelMemberBukkitConsole ) {
@@ -325,7 +321,6 @@ public class BukkitEventSender implements EventSenderInterface {
      */
     private CommandSender convertChannelMemberToCommandSender(ChannelMember cm) {
         if ( cm == null ) return null;
-        if ( cm instanceof ChannelMemberBungee ) return null; // Bungeeモードの場合は変換できない
         if ( cm instanceof ChannelMemberPlayer ) {
             return ((ChannelMemberPlayer)cm).getPlayer();
         } else if ( cm instanceof ChannelMemberBukkitConsole ) {

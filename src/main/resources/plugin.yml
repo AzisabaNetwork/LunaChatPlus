@@ -1,8 +1,8 @@
 name: LunaChat
 main: com.github.ucchyocean.lc3.LunaChatBukkit
-version: ${project.version}
+version: @version@
 authors: [ucchy, YukiLeafX, LazyGon, tomo1560]
-description: ${project.description}
+description: @description@
 softdepend: [Vault, dynmap, Multiverse-Core, mcMMO]
 api-version: 1.13
 
@@ -251,4 +251,3 @@ permissions:
       lunachat-admin.japanize-other: true
       lunachat-admin.force-invite: true
     description: permissions for the administrator
-    

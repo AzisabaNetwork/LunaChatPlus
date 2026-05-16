@@ -23,7 +23,6 @@ import com.github.ucchyocean.lc.japanize.JapanizeType;
 import com.github.ucchyocean.lc3.member.ChannelMember;
 import com.github.ucchyocean.lc3.member.ChannelMemberBlock;
 import com.github.ucchyocean.lc3.member.ChannelMemberBukkitConsole;
-import com.github.ucchyocean.lc3.member.ChannelMemberBungee;
 import com.github.ucchyocean.lc3.member.ChannelMemberPlayer;
 
 /**
@@ -342,12 +341,11 @@ class LunaChatAPIImpl implements LunaChatAPI {
 
     /**
      * ChannelMemberをChannelPlayerに変換する
-     * @param cp
+     * @param cm
      * @return
      */
     private ChannelPlayer convertChannelMemberToChannelPlayer(ChannelMember cm) {
         if ( cm == null ) return null;
-        if ( cm instanceof ChannelMemberBungee ) return null; // Bungeeモードの場合は変換できない
         if ( cm instanceof ChannelMemberPlayer ) {
             return ChannelPlayer.getChannelPlayer(cm.toString());
         } else if ( cm instanceof ChannelMemberBukkitConsole ) {
